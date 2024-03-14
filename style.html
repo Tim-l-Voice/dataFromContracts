@@ -1,0 +1,225 @@
+<style>
+    // ОБЩАЯ НАСТРОЙКА
+
+    body {
+      align-items: center;
+      justify-content: center;
+      background-color: lightgray;
+      text-align: center;
+      font-size: 24px;
+      font-family: 'Spectral', serif;
+    }
+
+    form {
+      padding: 12px 0;
+      border: 1px solid black;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+
+    // НАСТРОЙКА ЗАГОЛОВКА
+
+    h1 {
+      margin: 0.5em 0;
+      font-weight: 100;
+      text-transform: uppercase;
+      color: black;
+      font-size: 58px;
+      line-height: 54px;
+      text-shadow: 2px 5px 0 white;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+      border: 1px solid black;
+      font-family: inherit;
+    }
+
+    input::placeholder,
+    select:invalid {
+      color: #636c72;
+    }
+
+    // НАСТРОЙКА ПОЛЕЙ (КРОМЕ ЧЕКБОКСА)
+
+    input[type=text],
+    input[type=number],
+    select {
+      width: 50%;
+      font-size: 24px;
+      padding: 12px 20px;
+      margin: 12px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: inherit;
+      min-height: 62px;
+    }
+
+    select option[value=""] {
+      display: none;
+    }
+
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 0px;
+    }
+
+    #parkPlace {
+      min-height: 1.5rem;
+      display: flex;
+      width: 50%;
+      align-items: center;
+      margin: 0 auto;
+      gap: 1rem;
+    }
+
+    #parkPlace>#numPlace {
+      flex: 3;
+    }
+
+    // НАСТРОЙКА КНОПКИ "ОТПРАВИТЬ"
+
+
+    button[id="send"] {
+      font-family: inherit;
+      width: 50%;
+      border: none;
+      border-radius: 20px;
+      padding: 30px 0;
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      background: darkgreen;
+      margin: 8px 0;
+      cursor: pointer;
+      margin: 12px 0 12px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    button[id="send"]:disabled {
+      color: #f2f2f2;
+      background: red;
+      cursor: default;
+    }
+
+    button[id="send"]:not(:disabled):hover {
+      color: #f2f2f2;
+      background: green;
+      cursor: pointer;
+    }
+
+    // НАСТРОЙКА ЧЕКБОКСА
+
+    .input-disabled {
+      cursor: default;
+      border: 1px solid #000000;
+      background-color: #f2f2f2;
+    }
+
+    .checkbox-wrapper {
+      position: relative;
+      /*   min-width: 36px; */
+      flex: 1;
+      height: 60px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .custom-checkbox {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      color: #ccc;
+      display: inline-block;
+      z-index: 0;
+      user-select: none;
+    }
+
+    .real-checkbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: transparent;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+    }
+
+    .checkbox-wrapper:has(.real-checkbox:checked) {
+      background: #BDBDBD;
+    }
+
+    .checkbox-wrapper:has(.real-checkbox:checked)>.custom-checkbox {
+      color: white;
+    }
+
+    // БЛОК ОТКЛЮЧЕНИЯ СТРЕЛОЧЕК В "SELECT"
+
+    input[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+      appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"]::-moz-number-spin-box {
+      -moz-appearance: textfield;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    // ПОПАП
+
+    .popup {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      background: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup > h3 {
+      margin: 0.5rem 0 10rem 2rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      color: black;
+      font-size: 58px;
+      line-height: 80px;
+      text-shadow: 2px 5px 0 white;
+      border-radius: 20px;
+      background-color: #f2f2f2;
+      padding: 40px;
+      font-size: 70px;
+      text-align: center;
+      border-color: black;
+      border: 2px solid;
+    }
+
+  </style>

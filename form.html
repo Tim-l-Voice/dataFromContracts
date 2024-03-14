@@ -1,0 +1,55 @@
+<h1>ФОРМА РЕГИСТРАЦИИ ПОСТОЯННОГО КЛИЕНТА:</h1>
+<form action="https://script.google.com/macros/s/AKfycbydzYF_7vO6NaG8_xP9iSOcvEQoNLnrfh_CAtbXj5Y/dev" method="POST">
+    <select id="numPark" name="numPark" size="1" required>
+      <option value="" disabled selected>Номер парковки:</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="11">11</option>
+    </select>
+
+    <div id="parkPlace">
+      <input type="text" id="numPlace" name="numPlace" placeholder="Номер парковочного места" min="0" max="999"
+                  oninput="this.value = this.value.slice(0, 3)">
+      <div class="checkbox-wrapper">
+        <span class="custom-checkbox">Б/М</span>
+        <input type="checkbox" id="withoutPlace" name="withoutPlace" name="place" class="real-checkbox" onchange="handleRadioChange()">
+      </div>
+    </div>
+
+    <input type="text" name="fio" id="fio" placeholder="Ф.И.О. клиента" required>
+    <input type="text" name="numCarState" id="numCarState" placeholder="Гос. номер ТС клиента" required>
+    <input type="number" name="tel" id="tel" min="9000000000" max="9999999999" placeholder="Номер телефона клиента: +7"
+              oninput="this.value = this.value.slice(0, 10)" required>
+
+    <select id="typeCar" name="typeCar" required>
+      <option value="" disabled selected>Тип транспортного средства</option>
+      <option value="Легковой">Легковой автомобиль</option>
+      <option value="Коммерция">Коммерческий автомобиль</option>
+      <option value="Мотоцикл">Мотоцикл</option>
+      <option value="Прицеп">Прицеп</option>
+      <option value="Спецтехника">Спец. техника</option>
+    </select>
+
+    <select id="reference" name="reference" required>
+      <option value="" disabled selected>Откуда клиент узнал о нас?</option>
+      <option value="Не указал">Не хочет озвучивать или не получилось узнать</option>
+      <option value="Баннер">Живёт рядом | Увидел рекламу на улице | Проходил мимо и увидел</option>
+      <option value="От знакомых">Знакомые/друзья/родственники посоветовали</option>
+      <option value="От юр. лица">Посоветовала фирма/компания/контора, являющаяся или являвшаяся арендатором
+      </option>
+      <option value="От менеджера">Разговаривал с менеджером/диспетчером</option>
+      <option value="Стоял ранее">Ранее парковался на наших парковках</option>
+      <option value="Яндекс">Увидел рекламу в Яндексе/Яндекс Картах/Яндекс Навигаторе</option>
+      <option value="Google">Увидел рекламу в Гугл/Гугл Картах/Гугл Навигаторе</option>
+      <option value="2Gis">Увидел рекламу в 2Гис Картах</option>
+      <option value="С сайта">Нашёл в интернете наш официальный сайт</option>
+    </select>
+
+    <button type="submit" id="send" disabled>ОТПРАВИТЬ</button>
+  </form>

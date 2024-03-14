@@ -1,0 +1,96 @@
+<script>
+      const numCarState = document.getElementById("numCarState")
+      const send = document.getElementById("send")
+      const inputField = document.getElementById("numPlace")
+      const radio = document.getElementById("withoutPlace")
+      const tel = document.getElementById('tel')
+      const numParkSelect = document.getElementById("numPark")
+      const referenceSelect = document.getElementById("reference")
+      const typeCarSelect = document.getElementById("typeCar")
+      const fio = document.getElementById('fio')
+
+      function hasErrors(element) {
+          return !element.value.length || !element.validity.valid
+      }
+
+      function handleRadioChange() {
+          const radioChecked = radio.checked;
+
+          if (radioChecked) {
+              inputField.value = "";
+              inputField.classList.add('input-disabled')
+          } else {
+              inputField.classList.remove('input-disabled')
+          }
+      }
+
+      function isCyrillic(e) {
+          return e.data.charCodeAt(0) >= 1040 && e.data.charCodeAt(0) <= 1103
+      }
+
+      function isDigit(e) {
+          return e.data.charCodeAt(0) >= 48 && e.data.charCodeAt(0) <= 57
+      }
+
+      function validateForm() {
+          const validParkPlace = !hasErrors(inputField) || radio.checked;
+          send.disabled = hasErrors(numCarState) || hasErrors(tel) || !validParkPlace
+              || hasErrors(numParkSelect) || hasErrors(referenceSelect)
+              || hasErrors(typeCarSelect) || hasErrors(fio);
+      }
+
+      inputField.addEventListener('click', () => {
+          if (radio.checked) {
+              radio.checked = false;
+              inputField.classList.remove('input-disabled')
+          }
+      })
+
+      document.addEventListener('input', validateForm)
+      document.addEventListener('click', validateForm)
+
+      // numCarState.addEventListener('beforeinput', e => {
+      //     const currentValue = e.target.value
+      //     const currentIndex = currentValue.length + 1
+
+      //     if (currentIndex <= 1
+      //         && e.inputType === "insertText"
+      //         && !isCyrillic(e)
+      //     ) {
+      //         e.preventDefault()
+      //     } else if (currentIndex >= 2 && currentIndex <= 4
+      //         && e.inputType === "insertText"
+      //         && !isDigit(e)
+      //     ) {
+      //         e.preventDefault()
+      //     } else if ((currentIndex == 5 || currentIndex == 6)
+      //         && e.inputType === "insertText"
+      //         && !isCyrillic(e)
+      //     ) {
+      //         e.preventDefault()
+      //     } else if (currentIndex > 6 && e.inputType === "insertText") {
+      //         e.preventDefault()
+      //     }
+      // })
+
+      inputField.addEventListener('beforeinput', e => {
+          if (e.inputType === "insertText" && (isNaN(e.data) && e.data !== ".")) {
+              e.preventDefault()
+          }
+      })
+
+      inputField.addEventListener('input', e => {
+          e.target.value = e.target.value.slice(0, 3)
+      })
+
+
+      // numCarState.addEventListener('input', e => {
+      //     const regex = /^\p{Letter}\d{3}\p{Letter}{2}$/gui
+      //     if (regex.test(e.target.value)) {
+      //         e.target.setCustomValidity('')
+      //     } else {
+      //         e.target.setCustomValidity('error')
+      //     }
+      // })
+
+</script>
